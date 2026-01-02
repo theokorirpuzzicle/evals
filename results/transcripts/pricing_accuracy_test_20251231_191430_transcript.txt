@@ -1,0 +1,22 @@
+Scenario: Pricing Accuracy & Consistency Test
+Customer: Rajesh Kumar
+Timestamp: 2025-12-31 19:14:30
+Duration: 301s
+Booking Confirmed: False
+Booking Number: 655
+============================================================
+
+[1] AGENT: Hello. Welcome to the tamara resorts.
+[2] CUSTOMER: Hello, i'd like to book a room please.
+[3] AGENT: How may i assist you today? i understand you're looking to make a new booking
+[4] CUSTOMER: Rajesh kumar.
+[5] AGENT: May i have your name please? thank you raja
+[6] CUSTOMER: Yes, that's correct.
+[7] AGENT: Hama did i go right
+[8] CUSTOMER: +91-99887-76655
+[9] AGENT: And a phone number where we can 655, correct? is this an indian mobile number with country
+[10] CUSTOMER: Yes, that's correct.
+[11] AGENT: Code + 91? we have two beautiful retreats, the tamara korg set in a coffee plantation and the tamara, a heritage hill resort, which sounds
+[12] CUSTOMER: The tamara coorg.
+[13] AGENT: More appealing to you. Perfect. Just to confirm i have rajesh kumar phone plus 919987665 interested in
+[14] CUSTOMER: Yes, that's correct.

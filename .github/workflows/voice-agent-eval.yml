@@ -1,0 +1,127 @@
+name: Voice Agent Evaluation
+
+on:
+  # Run on demand
+  workflow_dispatch:
+    inputs:
+      scenario_ids:
+        description: 'Scenario IDs to run (space-separated, leave empty for all)'
+        required: false
+        default: ''
+  
+  # Run on schedule (daily at 2 AM UTC)
+  schedule:
+    - cron: '0 2 * * *'
+  
+  # Run on push to main (for testing)
+  push:
+    branches:
+      - main
+    paths:
+      - 'anticipatory/scenarios/**'
+      - 'run_scenario_eval.py'
+      - 'bidirectional_test.py'
+      - 'anticipatory/hotel_eval/**'
+
+jobs:
+  run-scenarios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run voice agent scenarios
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          VOICE_AGENT_WS_URL: ${{ secrets.VOICE_AGENT_WS_URL }}
+        run: |
+          if [ -n "${{ github.event.inputs.scenario_ids }}" ]; then
+            python run_scenario_eval.py -i ${{ github.event.inputs.scenario_ids }}
+          else
+            python run_scenario_eval.py
+          fi
+
+      - name: Upload evaluation results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evaluation-results-${{ github.run_number }}
+          path: |
+            evaluation_results.xlsx
+            results/**/*.json
+          retention-days: 90
+
+      - name: Commit and push results
+        if: always()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          # Only add files that exist
+          [ -f evaluation_results.xlsx ] && git add evaluation_results.xlsx || echo "No Excel file to commit"
+          [ -d results ] && git add results/ || echo "No results directory to commit"
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update evaluation results [skip ci]" && git push)
+
+      - name: Check evaluation results
+        run: |
+          python -c "
+          import openpyxl
+          import sys
+          
+          wb = openpyxl.load_workbook('evaluation_results.xlsx')
+          ws = wb['Runs Summary']
+          
+          # Get latest run (last row)
+          last_row = ws.max_row
+          success_rate = ws.cell(row=last_row, column=7).value
+          
+          print(f'Success Rate: {success_rate}%')
+          
+          # Fail if success rate is below 50%
+          if success_rate < 50:
+              print(f'❌ FAILURE: Success rate ({success_rate}%) is below 50%')
+              sys.exit(1)
+          else:
+              print(f'✅ SUCCESS: Success rate ({success_rate}%) is acceptable')
+          "
+
+      - name: Create issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Read the latest results
+            let body = '## Voice Agent Evaluation Failed\n\n';
+            body += 'The latest voice agent evaluation run has failed or shows a success rate below 50%.\n\n';
+            body += `**Run Number:** ${{ github.run_number }}\n`;
+            body += `**Triggered By:** ${{ github.event_name }}\n`;
+            body += `**Workflow:** [View Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\n\n`;
+            body += '### Actions Required\n';
+            body += '1. Download the evaluation results artifact\n';
+            body += '2. Review the Excel file for detailed failure information\n';
+            body += '3. Check individual scenario criteria results\n';
+            body += '4. Investigate root causes and fix issues\n\n';
+            body += '### Quick Links\n';
+            body += `- [Scenarios File](https://github.com/${{ github.repository }}/blob/main/anticipatory/scenarios/scenarios.json)\n`;
+            body += `- [Evaluation Results](https://github.com/${{ github.repository }}/blob/main/evaluation_results.xlsx)\n`;
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Voice Agent Evaluation Failed - Run #${{ github.run_number }}`,
+              body: body,
+              labels: ['voice-agent', 'evaluation-failure', 'automated']
+            });

@@ -1,0 +1,16 @@
+Scenario: Basic Information Capture Test
+Customer: Manmita Chatterjee
+Timestamp: 2025-12-31 19:09:21
+Duration: 302s
+Booking Confirmed: False
+Booking Number: AAND
+============================================================
+
+[1] AGENT: Hello. Welcome to the tamara resorts.
+[2] CUSTOMER: Hello, i'd like to book a room please.
+[3] AGENT: How may i assist you? i understand you're looking to make a new booking
+[4] CUSTOMER: Manmita chatterjee.
+[5] AGENT: May i have your name please thank you
+[6] CUSTOMER: Yes, that's correct.
+[7] AGENT: Do you have a and
+[8] CUSTOMER: +91-98765-43210.

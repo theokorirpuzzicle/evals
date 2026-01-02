@@ -1,0 +1,26 @@
+Scenario: Basic Information Capture Test
+Customer: Manmita Chatterjee
+Timestamp: 2025-12-31 18:48:17
+Duration: 302s
+Booking Confirmed: False
+Booking Number: 9MONTH
+============================================================
+
+[1] AGENT: Hello welcome to the tamer resorts
+[2] CUSTOMER: Hello, i'd like to book a room, please.
+[3] AGENT: How may i assisted it i understand are you looking to make a new booking or do you have a question about an
+[4] CUSTOMER: I want to make a new booking.
+[5] AGENT: Existing reservation? perfect
+[6] CUSTOMER: Manmita chatterjee.
+[7] AGENT: I have your name. Thank you, me
+[8] CUSTOMER: Yes, that's correct.
+[9] AGENT: Ta. Did i get ready?
+[10] CUSTOMER: +91-98765-43210 43210
+[11] AGENT: Than a phone number where we need to thank you. That's 987643210
+[12] CUSTOMER: No, it's 98765-43210.
+[13] AGENT: Correct. So it's 987643210. Is this an indian mobile number with country
+[14] CUSTOMER: Yes, that's correct.
+[15] AGENT: Code plus 9 month? we have two beautiful retreats. The tamrog set in a coffee plantation and the tamu, a heritage hill resort, which sou
+[16] CUSTOMER: The tamara coorg, please.
+[17] AGENT: Nds more appealing to. Perfect. Just to confirm i have meka chatterjee phone plus 91987643210 interested in
+[18] CUSTOMER: Yes, that's correct.

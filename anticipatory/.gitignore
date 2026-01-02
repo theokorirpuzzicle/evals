@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Audio files (large, stored as artifacts instead)
+audio/*.wav
+
+# Per-run results (stored as artifacts)
+results_*.csv
+results_*.json
+*_transcripts.json
+
+# Keep the persistent Excel file
+!evaluation_results.xlsx
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log

@@ -1,0 +1,8 @@
+Scenario: Basic Information Capture Test
+Customer: Manmita Chatterjee
+Timestamp: 2026-01-02 12:48:06
+Duration: 10s
+Booking Confirmed: False
+Booking Number: None
+============================================================
+

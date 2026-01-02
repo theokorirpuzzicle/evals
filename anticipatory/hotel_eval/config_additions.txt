@@ -1,0 +1,6 @@
+
+# Voice Agent WebSocket URL (for direct connection)
+VOICE_AGENT_WS_URL = os.getenv("VOICE_AGENT_WS_URL", "wss://caller.anticipatory.com/ws/booking")
+
+# 20ms of silence at 16kHz = 320 samples = 640 bytes
+SILENCE_20MS = b'\x00\x00' * 320

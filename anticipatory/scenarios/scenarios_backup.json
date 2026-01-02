@@ -1,0 +1,2099 @@
+{
+    "scenarios": [
+        {
+            "id": "basic_coorg_booking",
+            "name": "Basic Tamara Coorg Booking",
+            "description": "Standard booking flow for Tamara Coorg - happy path",
+            "timeout": 600,
+            "customer": {
+                "name": "Rajesh Kumar",
+                "phone": "+91 98765 43210",
+                "email": "rajesh.kumar@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "tomorrow",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hello",
+                "tone": "polite",
+                "pace": "normal",
+                "verbosity": "concise"
+            },
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "basic_kodai_booking",
+            "name": "Basic Tamara Kodai Booking",
+            "description": "Standard booking flow for Tamara Kodai - happy path",
+            "timeout": 600,
+            "customer": {
+                "name": "Priya Sharma",
+                "phone": "+91 99887 76655",
+                "email": "priya.sharma@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "next Monday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "direct_request",
+                "greeting": "Hi, good morning",
+                "tone": "friendly",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone",
+                    "email"
+                ]
+            }
+        },
+        {
+            "id": "south_indian_name_accent",
+            "name": "South Indian Name with Regional Accent",
+            "description": "Customer with long South Indian name - tests name handling",
+            "timeout": 600,
+            "customer": {
+                "name": "Aashish Subramaniam",
+                "phone": "+91 94440 55566",
+                "email": "aashish.subbu@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Saturday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Vanakkam, hello",
+                "tone": "warm",
+                "pace": "slow",
+                "verbosity": "medium",
+                "accent": "Tamil"
+            },
+            "additional_instructions": "Speak with a Tamil accent. If asked to repeat your name, say 'You can call me Subram for short'. Emphasize correct pronunciation of 'Aashish' as 'Aa-shish'.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "north_indian_hindi_speaker",
+            "name": "North Indian Hindi Speaker",
+            "description": "Customer who occasionally uses Hindi words",
+            "timeout": 600,
+            "customer": {
+                "name": "Ramesh Chandra Gupta",
+                "phone": "+91 98111 22233",
+                "email": "ramesh.gupta@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next week",
+                "duration": "3 nights",
+                "guests": "4 adults",
+                "room_type": "Suite Cottage"
+            },
+            "conversation_style": {
+                "opening": "greeting_only",
+                "greeting": "Namaste, hello ji",
+                "tone": "warm",
+                "pace": "normal",
+                "verbosity": "medium",
+                "accent": "Hindi",
+                "language_mix": [
+                    "haan",
+                    "theek hai",
+                    "acha",
+                    "ji",
+                    "bilkul"
+                ]
+            },
+            "additional_instructions": "Mix in Hindi words naturally: 'Haan, that's correct', 'Acha, sounds good', 'Theek hai, let's do that'. Add 'ji' occasionally for respect.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "british_nri_customer",
+            "name": "British NRI Customer",
+            "description": "Formal Indian customer with articulate speech",
+            "timeout": 600,
+            "customer": {
+                "name": "Arun Kumar",
+                "phone": "+91 98765 90012",
+                "email": "arun.kumar@gmail.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "January 15th",
+                "duration": "5 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Suite"
+            },
+            "conversation_style": {
+                "opening": "question_first",
+                "greeting": "Oh hello there",
+                "first_question": "Is this the Tamara Resorts booking line?",
+                "tone": "polite_formal",
+                "pace": "measured",
+                "verbosity": "articulate",
+                "phrases": [
+                    "lovely",
+                    "excellent",
+                    "quite nice",
+                    "wonderful",
+                    "thank you"
+                ]
+            },
+            "additional_instructions": "Speak formally and articulately. Use expressions like 'That sounds lovely', 'Excellent, thank you', 'Quite nice indeed'. Be polite and measured in speech.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone",
+                    "email"
+                ]
+            }
+        },
+        {
+            "id": "american_tourist",
+            "name": "American Tourist",
+            "description": "Enthusiastic young professional booking resort",
+            "timeout": 600,
+            "customer": {
+                "name": "Arjun Mehta",
+                "phone": "+91 99880 55019",
+                "email": "arjun.mehta@gmail.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "December 28th",
+                "duration": "4 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "enthusiastic_intro",
+                "greeting": "Hey, hi there!",
+                "opening_line": "I found your resort online and it looks amazing!",
+                "tone": "enthusiastic",
+                "pace": "fast",
+                "verbosity": "chatty",
+                "phrases": [
+                    "awesome",
+                    "sounds great",
+                    "perfect",
+                    "cool",
+                    "absolutely"
+                ]
+            },
+            "additional_instructions": "Be enthusiastic! 'That sounds awesome!', 'Perfect!', 'Cool, let's do it'. Show excitement about the resort. Use energetic language throughout.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone",
+                    "email"
+                ]
+            }
+        },
+        {
+            "id": "soft_spoken_elderly",
+            "name": "Soft-Spoken Elderly Customer",
+            "description": "Elderly customer who speaks softly and slowly",
+            "timeout": 600,
+            "customer": {
+                "name": "Kamala Devi",
+                "phone": "+91 80 2556 7890",
+                "email": "kamala.devi@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "next Thursday",
+                "duration": "4 nights",
+                "guests": "2 adults",
+                "room_type": "Ground floor room"
+            },
+            "conversation_style": {
+                "opening": "hesitant_start",
+                "greeting": "Hello... yes, hello",
+                "opening_line": "I'm not sure if I'm calling the right number... is this for hotel bookings?",
+                "tone": "gentle",
+                "pace": "very_slow",
+                "verbosity": "detailed",
+                "pauses": true
+            },
+            "additional_instructions": "Speak slowly with occasional pauses. Sometimes say 'Let me think...' or 'One moment...'. Ask for a ground floor room due to difficulty with stairs. Be patient and repeat information if asked.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "fast_speaker_busy",
+            "name": "Fast-Speaking Busy Professional",
+            "description": "Busy professional who speaks quickly and efficiently",
+            "timeout": 600,
+            "customer": {
+                "name": "Aditya Verma",
+                "phone": "+91 99001 88877",
+                "email": "aditya.verma@techcorp.in"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "this Friday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Any available"
+            },
+            "conversation_style": {
+                "opening": "direct_efficient",
+                "greeting": "Hi",
+                "opening_line": "I need to book a room for this Friday, two nights, two people. What do you have available?",
+                "tone": "business",
+                "pace": "fast",
+                "verbosity": "minimal",
+                "interrupts": false,
+                "phrases": [
+                    "Yes",
+                    "Correct",
+                    "That works",
+                    "Done",
+                    "Let's proceed",
+                    "Fine"
+                ]
+            },
+            "additional_instructions": "Be efficient - give information before being asked when possible. Short responses: 'Yes', 'Correct', 'That works'. Don't waste time on pleasantries. If agent is slow, stay patient but brief.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "chatty_friendly",
+            "name": "Chatty Friendly Customer",
+            "description": "Very friendly customer who likes to chat",
+            "timeout": 600,
+            "customer": {
+                "name": "Meenakshi Sundaram",
+                "phone": "+91 98410 55667",
+                "email": "meena.sundaram@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next weekend",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "chatty_intro",
+                "greeting": "Oh hello! How are you doing today?",
+                "opening_line": "I hope I'm not catching you at a busy time! I've been meaning to call for days...",
+                "tone": "very_friendly",
+                "pace": "normal",
+                "verbosity": "very_chatty",
+                "small_talk": true
+            },
+            "additional_instructions": "Be warm and chatty. Add small comments: 'Oh that sounds wonderful!', 'You know, my friend stayed there and loved it', 'The weather has been so nice lately, perfect for a trip'. But still provide all necessary booking info when asked.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "nervous_first_timer",
+            "name": "Nervous First-Time Luxury Booker",
+            "description": "Customer nervous about booking expensive resort",
+            "timeout": 600,
+            "customer": {
+                "name": "Sandeep Kumar",
+                "phone": "+91 97890 44332",
+                "email": "sandeep.k@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "uncertain_start",
+                "greeting": "Um, hi",
+                "opening_line": "I was looking at your resort online... I wanted to ask about booking a room?",
+                "tone": "nervous",
+                "pace": "hesitant",
+                "verbosity": "medium",
+                "filler_words": [
+                    "um",
+                    "uh",
+                    "I think",
+                    "maybe",
+                    "I guess"
+                ]
+            },
+            "additional_instructions": "Sound slightly nervous - this is your first luxury resort. Use filler words occasionally: 'Um, yes that's my number', 'I think... yes, two nights'. When told the price, pause briefly then say 'Okay, that's fine'. Gain confidence as the call progresses.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "children_coorg_redirect",
+            "name": "Family with Children - Coorg to Kodai Redirect",
+            "description": "Customer wants Coorg but has children under 12",
+            "timeout": 600,
+            "customer": {
+                "name": "Anand Menon",
+                "phone": "+91 94567 12345",
+                "email": "anand.menon@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Saturday",
+                "duration": "2 nights",
+                "guests": "2 adults and 2 children aged 8 and 10",
+                "room_type": "Suite Cottage"
+            },
+            "conversation_style": {
+                "opening": "family_focused",
+                "greeting": "Good afternoon",
+                "opening_line": "I'm planning a family trip and would like to book at your Coorg property",
+                "tone": "pleasant",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Initially want Tamara Coorg. When told children under 12 aren't allowed, express mild surprise: 'Oh really? I didn't know that.' Then accept Kodai: 'That's fine, Kodai works for us.'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "infant_allowed",
+            "name": "Family with Infant (Allowed)",
+            "description": "Family with infant under 11 months - allowed at both",
+            "timeout": 600,
+            "customer": {
+                "name": "Divya Shankar",
+                "phone": "+91 98234 11122",
+                "email": "divya.shankar@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "January 20th",
+                "duration": "3 nights",
+                "guests": "2 adults and 1 infant (8 months old)",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_then_request",
+                "greeting": "Hi there",
+                "tone": "warm",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Mention your 8-month-old baby when asked about guests. Be slightly worried: 'We have an 8 month old - is that okay?' Be relieved when told infants are allowed.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "anniversary_celebration",
+            "name": "Wedding Anniversary Celebration",
+            "description": "Couple celebrating wedding anniversary",
+            "timeout": 600,
+            "customer": {
+                "name": "Amit Patel",
+                "phone": "+91 98123 45678",
+                "email": "amit.patel@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "December 25th",
+                "duration": "4 nights",
+                "guests": "2 adults",
+                "room_type": "Superior Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "excited_special",
+                "greeting": "Hello!",
+                "opening_line": "I want to book something special - it's for our anniversary!",
+                "tone": "excited",
+                "pace": "normal",
+                "verbosity": "expressive"
+            },
+            "additional_instructions": "Sound excited about your 10th anniversary. When asked about special occasions, enthusiastically share: 'Yes! It's our 10th wedding anniversary - a whole decade!' Ask about special arrangements.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ],
+                "must_contain": [
+                    "anniversary"
+                ]
+            }
+        },
+        {
+            "id": "honeymoon_booking",
+            "name": "Honeymoon Booking",
+            "description": "Newlyweds booking honeymoon stay",
+            "timeout": 600,
+            "customer": {
+                "name": "Rohan Desai",
+                "phone": "+91 88776 65544",
+                "email": "rohan.desai@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "January 5th",
+                "duration": "5 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "happy_announcement",
+                "greeting": "Hi, good morning!",
+                "opening_line": "I just got married last week and I'm looking to book our honeymoon!",
+                "tone": "very_happy",
+                "pace": "enthusiastic",
+                "verbosity": "expressive"
+            },
+            "additional_instructions": "Sound happy and newly-wed excited! Start by sharing you just got married. When asked about occasion, confirm it's your honeymoon. Ask about romantic touches.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ],
+                "must_contain": [
+                    "honeymoon"
+                ]
+            }
+        },
+        {
+            "id": "birthday_milestone",
+            "name": "Milestone 50th Birthday",
+            "description": "Customer celebrating 50th birthday",
+            "timeout": 600,
+            "customer": {
+                "name": "Sunita Reddy",
+                "phone": "+91 98234 56789",
+                "email": "sunita.reddy@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "January 15th",
+                "duration": "3 nights",
+                "guests": "4 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Good afternoon",
+                "tone": "pleasant",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Don't mention birthday upfront - wait for agent to ask about special occasions. Then say: 'Actually yes, I'm turning 50! My friends are treating me.' Ask about cake arrangements.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ],
+                "must_contain": [
+                    "birthday"
+                ]
+            }
+        },
+        {
+            "id": "new_year_eve",
+            "name": "New Year's Eve Celebration",
+            "description": "Booking for New Year's Eve - peak season",
+            "timeout": 600,
+            "customer": {
+                "name": "Maya Patel",
+                "phone": "+91 99334 55667",
+                "email": "maya.patel@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "December 31st",
+                "duration": "2 nights",
+                "guests": "4 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "specific_date_focus",
+                "greeting": "Hi",
+                "opening_line": "I'm looking to book for New Year's Eve specifically - do you have availability?",
+                "tone": "purposeful",
+                "pace": "normal",
+                "verbosity": "concise"
+            },
+            "additional_instructions": "Be direct about wanting New Year's Eve dates. Ask about special events, gala dinner, or celebrations at the resort. Show concern about availability: 'I hope it's not fully booked already?'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "corporate_retreat_large",
+            "name": "Large Corporate Retreat",
+            "description": "Corporate retreat for 10 adults",
+            "timeout": 600,
+            "customer": {
+                "name": "Vikram Singh",
+                "phone": "+91 87654 32109",
+                "email": "vikram.singh@techcorp.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Friday",
+                "duration": "2 nights",
+                "guests": "10 adults",
+                "room_type": "Multiple cottages"
+            },
+            "conversation_style": {
+                "opening": "professional_inquiry",
+                "greeting": "Good morning",
+                "opening_line": "I'm calling from TechCorp regarding a corporate offsite booking",
+                "tone": "professional",
+                "pace": "measured",
+                "verbosity": "business_like"
+            },
+            "additional_instructions": "Be professional and organized. Mention you need multiple cottages for 10 people. Ask about corporate rates, team activities, and meeting spaces. Speak like you're used to organizing corporate events.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "solo_wellness_retreat",
+            "name": "Solo Wellness Retreat",
+            "description": "Single guest seeking wellness and meditation",
+            "timeout": 600,
+            "customer": {
+                "name": "Kavitha Iyer",
+                "phone": "+91 99001 22334",
+                "email": "kavitha.iyer@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "this Thursday",
+                "duration": "5 nights",
+                "guests": "1 adult",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "calm_request",
+                "greeting": "Hello",
+                "opening_line": "I'm looking for a quiet place to spend a few days alone... for some peace and reflection",
+                "tone": "calm",
+                "pace": "slow",
+                "verbosity": "thoughtful"
+            },
+            "additional_instructions": "Speak calmly and thoughtfully. Emphasize need for solitude and quiet. Ask about yoga, spa, meditation spaces. Say things like 'I really need to disconnect from everything.'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "dietary_vegetarian_vegan",
+            "name": "Strict Dietary Requirements",
+            "description": "Customer with vegetarian and vegan dietary needs",
+            "timeout": 600,
+            "customer": {
+                "name": "Meera Nair",
+                "phone": "+91 76543 21098",
+                "email": "meera.nair@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "this Saturday",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "concerned_query",
+                "greeting": "Hi",
+                "opening_line": "Before I book, I need to check something important about food...",
+                "tone": "concerned",
+                "pace": "normal",
+                "verbosity": "detailed_about_food"
+            },
+            "additional_instructions": "Lead with dietary concerns: 'I'm strictly vegetarian - no eggs - and my husband is vegan.' Ask specifically if kitchen can handle this for ALL meals. Only proceed with booking once reassured.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ],
+                "must_contain": [
+                    "vegetarian"
+                ]
+            }
+        },
+        {
+            "id": "food_allergy_gluten",
+            "name": "Guest with Food Allergies",
+            "description": "Customer with severe gluten allergy",
+            "timeout": 600,
+            "customer": {
+                "name": "Pooja Malhotra",
+                "phone": "+91 98765 11223",
+                "email": "pooja.m@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "next Wednesday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "allergy_first",
+                "greeting": "Hello",
+                "opening_line": "Hi, I have a medical question before booking - I have celiac disease",
+                "tone": "serious",
+                "pace": "careful",
+                "verbosity": "detailed_about_allergy"
+            },
+            "additional_instructions": "Be serious about your allergy - it's a medical condition. Ask: 'Can your kitchen prepare completely gluten-free meals? It's not a preference, it's celiac disease.' Need reassurance before proceeding.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "wheelchair_accessibility",
+            "name": "Wheelchair Accessibility Required",
+            "description": "Guest requiring wheelchair accessible room",
+            "timeout": 600,
+            "customer": {
+                "name": "Suresh Babu",
+                "phone": "+91 94432 88990",
+                "email": "suresh.babu@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "January 10th",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Accessible room"
+            },
+            "conversation_style": {
+                "opening": "accessibility_inquiry",
+                "greeting": "Good morning",
+                "opening_line": "I need to ask about wheelchair accessibility at your resort",
+                "tone": "practical",
+                "pace": "normal",
+                "verbosity": "specific"
+            },
+            "additional_instructions": "Be practical and specific: 'My wife uses a wheelchair. We need a ground floor room with roll-in bathroom access.' Ask about ramps, accessible paths to restaurant, etc. Need specific answers.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "early_checkin_request",
+            "name": "Early Check-in Request",
+            "description": "Customer requesting early check-in",
+            "timeout": 600,
+            "customer": {
+                "name": "Karthik Rajan",
+                "phone": "+91 99887 44556",
+                "email": "karthik.rajan@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "tomorrow",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "time_sensitive",
+                "greeting": "Hi",
+                "opening_line": "I need to book for tomorrow but we have an early flight arriving at 9 AM",
+                "tone": "hopeful",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Mention early arrival upfront. Ask about early check-in possibility. If there's a charge, say 'That's fine, we really need the early check-in.' Be appreciative if they accommodate.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "late_checkout_request",
+            "name": "Late Check-out Request",
+            "description": "Customer requesting late check-out",
+            "timeout": 600,
+            "customer": {
+                "name": "Neelam Kapoor",
+                "phone": "+91 98112 33667",
+                "email": "neelam.k@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "next Friday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Suite"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hello, good afternoon",
+                "tone": "polite",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Don't mention late checkout until booking details are discussed. Then ask: 'One thing - our train is at 6 PM. Any chance of late checkout, maybe until 4?' Accept whatever policy they have.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "undecided_needs_help",
+            "name": "Undecided Customer Needs Guidance",
+            "description": "Customer unsure which resort to choose",
+            "timeout": 600,
+            "customer": {
+                "name": "Neha Saxena",
+                "phone": "+91 98112 33445",
+                "email": "neha.saxena@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Saturday",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "confused_start",
+                "greeting": "Hi",
+                "opening_line": "I want to book but I'm a bit confused between your two properties...",
+                "tone": "uncertain",
+                "pace": "normal",
+                "verbosity": "questioning"
+            },
+            "additional_instructions": "Be genuinely undecided. Ask: 'What's the difference between Coorg and Kodai?', 'Which is better for couples?', 'What's the weather like at each?' After explanations, choose Coorg: 'The coffee plantation sounds lovely, let's go with Coorg.'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "price_conscious_budget",
+            "name": "Price-Conscious Budget Customer",
+            "description": "Customer asking about most affordable options",
+            "timeout": 600,
+            "customer": {
+                "name": "Ravi Teja",
+                "phone": "+91 97890 12345",
+                "email": "ravi.teja@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Wednesday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Most affordable option"
+            },
+            "conversation_style": {
+                "opening": "budget_inquiry",
+                "greeting": "Hi",
+                "opening_line": "I've been wanting to visit Tamara but I'm on a bit of a budget...",
+                "tone": "honest",
+                "pace": "normal",
+                "verbosity": "straightforward"
+            },
+            "additional_instructions": "Be upfront about budget: 'What's your most affordable room?' When given price, pause then say 'Okay, that's a bit more than I expected but... it includes meals right? Okay, let's do it.' Don't haggle, just clarify what's included.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "same_day_last_minute",
+            "name": "Same-Day Last Minute Booking",
+            "description": "Customer wanting to book for today",
+            "timeout": 600,
+            "customer": {
+                "name": "Rahul Joshi",
+                "phone": "+91 99887 11223",
+                "email": "rahul.joshi@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "today",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Any available"
+            },
+            "conversation_style": {
+                "opening": "urgent_request",
+                "greeting": "Hi, hello",
+                "opening_line": "This might be crazy but - do you have anything available for TODAY?",
+                "tone": "hopeful_urgent",
+                "pace": "quick",
+                "verbosity": "flexible"
+            },
+            "additional_instructions": "Be spontaneous: 'We just decided this morning to get away!' Be flexible: 'We'll take any room you have.' Ask how quickly you could check in if you leave now.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "extended_week_stay",
+            "name": "Extended Week-Long Stay",
+            "description": "Customer booking for full week",
+            "timeout": 600,
+            "customer": {
+                "name": "Lakshmi Venkat",
+                "phone": "+91 94443 55566",
+                "email": "lakshmi.venkat@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "January 1st",
+                "duration": "7 nights",
+                "guests": "2 adults",
+                "room_type": "Suite"
+            },
+            "conversation_style": {
+                "opening": "extended_stay_intro",
+                "greeting": "Good morning",
+                "opening_line": "I'm looking to book a longer stay - a full week actually",
+                "tone": "relaxed",
+                "pace": "unhurried",
+                "verbosity": "conversational"
+            },
+            "additional_instructions": "Emphasize you want a real break: 'I want a proper week to unwind.' Ask about weekly rates or long stay discounts. Be relaxed about details - you have time to plan.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone",
+                    "email"
+                ]
+            }
+        },
+        {
+            "id": "repeat_loyal_customer",
+            "name": "Repeat Loyal Customer",
+            "description": "Customer who has stayed before and loved it",
+            "timeout": 600,
+            "customer": {
+                "name": "Anil Sharma",
+                "phone": "+91 98765 99999",
+                "email": "anil.sharma@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "returning_guest",
+                "greeting": "Hello!",
+                "opening_line": "Hi! I stayed at Tamara Coorg last year and absolutely loved it - I'm back for more!",
+                "tone": "enthusiastic",
+                "pace": "warm",
+                "verbosity": "appreciative"
+            },
+            "additional_instructions": "Be enthusiastic about returning! 'We had the best time last year in cottage 12.' Ask if same cottage available. Share specific memories: 'The coffee plantation walk was amazing!' Thank them for the great experience.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "booking_for_parents",
+            "name": "Booking for Elderly Parents",
+            "description": "Customer booking on behalf of elderly parents",
+            "timeout": 600,
+            "customer": {
+                "name": "Kiran Rao",
+                "phone": "+91 99001 44455",
+                "email": "kiran.rao@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "December 28th",
+                "duration": "4 nights",
+                "guests": "2 adults",
+                "room_type": "Ground floor room"
+            },
+            "conversation_style": {
+                "opening": "booking_for_others",
+                "greeting": "Hello",
+                "opening_line": "I'm calling to book for my parents - they're in their 70s",
+                "tone": "caring",
+                "pace": "normal",
+                "verbosity": "detailed_about_needs"
+            },
+            "additional_instructions": "Clarify early: 'The booking name will be under my name - Kiran Rao - but my parents will be staying.' Explain they need ground floor, no stairs. Ask about assistance for elderly guests.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone",
+                    "email"
+                ]
+            }
+        },
+        {
+            "id": "photography_enthusiast",
+            "name": "Photography Enthusiast",
+            "description": "Guest interested in photography spots",
+            "timeout": 600,
+            "customer": {
+                "name": "Siddharth Das",
+                "phone": "+91 98234 77889",
+                "email": "siddharth.photo@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next weekend",
+                "duration": "3 nights",
+                "guests": "1 adult",
+                "room_type": "Cottage with best views"
+            },
+            "conversation_style": {
+                "opening": "interest_based",
+                "greeting": "Hi there",
+                "opening_line": "I'm a photographer looking for a scenic property to shoot - I saw your resort photos online",
+                "tone": "creative",
+                "pace": "normal",
+                "verbosity": "visual_focused"
+            },
+            "additional_instructions": "Focus on visuals: 'Which cottage has the best sunrise view?', 'Are there good vantage points?', 'What time is the mist best for photos?' Be passionate about capturing the perfect shots.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "referred_by_friend",
+            "name": "Referred by Friend",
+            "description": "Customer referred by a friend who stayed",
+            "timeout": 600,
+            "customer": {
+                "name": "Tanvi Malhotra",
+                "phone": "+91 98765 22211",
+                "email": "tanvi.m@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next weekend",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "referral_mention",
+                "greeting": "Hello",
+                "opening_line": "My friend Priya recommended your resort - she couldn't stop talking about it!",
+                "tone": "trusting",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Mention friend's recommendation: 'Priya said the service was exceptional.' You already trust the resort based on friend's experience. Ask about what Priya might have experienced.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "found_on_instagram",
+            "name": "Found Resort on Instagram",
+            "description": "Customer discovered resort on social media",
+            "timeout": 600,
+            "customer": {
+                "name": "Priya Singh",
+                "phone": "+91 99887 33221",
+                "email": "priya.singh@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Most Instagram-worthy cottage"
+            },
+            "conversation_style": {
+                "opening": "social_media_inspired",
+                "greeting": "Hiii",
+                "opening_line": "Oh my god, I saw your resort on Instagram and it looks STUNNING!",
+                "tone": "excited_millennial",
+                "pace": "enthusiastic",
+                "verbosity": "expressive"
+            },
+            "additional_instructions": "Be enthusiastic about visuals: 'Those infinity pool photos!', 'The cottages look so dreamy!' Ask which cottage is most photogenic. Use younger expressions: 'That sounds amazing!', 'Love it!'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "correction_mid_booking",
+            "name": "Customer Corrects Information Mid-Booking",
+            "description": "Customer gives wrong phone number then corrects it",
+            "timeout": 600,
+            "customer": {
+                "name": "Ravi Kumar",
+                "phone": "+91 98765 12345",
+                "email": "ravi.kumar@gmail.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Tuesday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hi",
+                "tone": "normal",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "When asked for phone, say '+91 98765 12344' (wrong - ends in 4). When agent repeats back, say 'Oh sorry, I made a mistake - the last digit is 5, not 4. It's +91 98765 12345.' Apologize for the confusion.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "change_dates_mid_booking",
+            "name": "Customer Changes Dates Mid-Booking",
+            "description": "Customer realizes dates conflict and changes them",
+            "timeout": 600,
+            "customer": {
+                "name": "Shreya Reddy",
+                "phone": "+91 99001 55566",
+                "email": "shreya.reddy@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "January 20th",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Good morning",
+                "tone": "pleasant",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Initially say check-in January 15th. When agent is confirming, say 'Wait, sorry - I just remembered I have something on the 16th. Can we change to January 20th instead?' Apologize for the confusion.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "hesitant_not_ready_to_book",
+            "name": "Hesitant Customer - Not Ready to Book",
+            "description": "Customer interested but wants to think about it - should NOT result in booking",
+            "timeout": 600,
+            "customer": {
+                "name": "Pradeep Nair",
+                "phone": "+91 98123 77889",
+                "email": "pradeep.nair@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hello",
+                "tone": "uncertain",
+                "pace": "slow",
+                "verbosity": "hesitant"
+            },
+            "additional_instructions": "Be interested but hesitant. Go through the entire flow but when asked 'Shall I go ahead and secure this reservation?', say 'Hmm, let me think about it... can you email me the details? I need to check with my wife first.' Do NOT say yes to booking. If pressed, say 'I'll call back once I've decided.'",
+            "success_criteria": {
+                "booking_confirmed": false,
+                "email_requested": true,
+                "provided_info": [
+                    "name",
+                    "phone",
+                    "email"
+                ]
+            }
+        },
+        {
+            "id": "only_first_name_given",
+            "name": "Customer Gives Only First Name",
+            "description": "Customer initially gives only first name - agent should ask for full name",
+            "timeout": 600,
+            "customer": {
+                "name": "Arjun Krishnamoorthy",
+                "phone": "+91 99887 22334",
+                "email": "arjun.k@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "next Saturday",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hi",
+                "tone": "casual",
+                "pace": "normal",
+                "verbosity": "minimal"
+            },
+            "additional_instructions": "When asked for name, say only 'Arjun'. Wait for agent to ask for full name. When asked for full name, say 'Arjun Krishnamoorthy'. Spell it if asked: K-R-I-S-H-N-A-M-O-O-R-T-H-Y.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "ten_digit_no_country_code",
+            "name": "Ten Digit Phone Without Country Code",
+            "description": "Customer gives 10-digit number without country code",
+            "timeout": 600,
+            "customer": {
+                "name": "Deepa Menon",
+                "phone": "+91 94432 55667",
+                "email": "deepa.menon@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Friday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hello",
+                "tone": "polite",
+                "pace": "normal",
+                "verbosity": "concise"
+            },
+            "additional_instructions": "When asked for phone number, say '94432 55667' (without country code). If agent asks if it's Indian, say 'Yes, Indian number'. Then confirm the full number with +91.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "child_11_months_coorg",
+            "name": "Child Exactly 11 Months - Edge Case for Coorg",
+            "description": "Family with infant exactly 11 months - right at the cutoff",
+            "timeout": 600,
+            "customer": {
+                "name": "Varun Shetty",
+                "phone": "+91 98234 66778",
+                "email": "varun.shetty@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "January 25th",
+                "duration": "2 nights",
+                "guests": "2 adults and 1 infant (exactly 11 months old)",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Good morning",
+                "tone": "pleasant",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "When asked about children, say '2 adults and our baby'. If asked age, say 'She's exactly 11 months old, almost a year.' Be slightly anxious about whether this is allowed at Coorg.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "child_12_months_coorg_redirect",
+            "name": "Child Just Over 11 Months - Must Redirect",
+            "description": "Family with child just over 11 months - must be redirected to Kodai",
+            "timeout": 600,
+            "customer": {
+                "name": "Nandini Prakash",
+                "phone": "+91 99001 33445",
+                "email": "nandini.p@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next weekend",
+                "duration": "3 nights",
+                "guests": "2 adults and 1 toddler (13 months old)",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "direct_request",
+                "greeting": "Hi",
+                "tone": "friendly",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Initially want Coorg specifically. When asked about children, say '2 adults and our little one - he's 13 months, just turned one last month!' When told about age restrictions, be disappointed but accept Kodai: 'Oh, I didn't realize. Okay, Kodai should be fine then.'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "refuses_kodai_redirect",
+            "name": "Customer Refuses Kodai Redirect for Children",
+            "description": "Customer with kids wants only Coorg, refuses Kodai alternative",
+            "timeout": 600,
+            "customer": {
+                "name": "Sanjay Mittal",
+                "phone": "+91 98765 88990",
+                "email": "sanjay.mittal@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "February 1st",
+                "duration": "2 nights",
+                "guests": "2 adults and 2 children (ages 5 and 8)",
+                "room_type": "Suite Cottage"
+            },
+            "conversation_style": {
+                "opening": "direct_request",
+                "greeting": "Hello",
+                "tone": "firm",
+                "pace": "normal",
+                "verbosity": "concise"
+            },
+            "additional_instructions": "Specifically want Coorg because friends recommended it. When told about children restrictions and offered Kodai, say 'No, I specifically want Coorg. My friends stayed there and loved it. Kodai won't work for us.' Do not accept the Kodai alternative. The call should end without a booking.",
+            "success_criteria": {
+                "booking_confirmed": false,
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "large_group_multiple_cottages",
+            "name": "Large Group Requiring Multiple Accommodations",
+            "description": "Group of 6 adults requiring multiple cottages",
+            "timeout": 600,
+            "customer": {
+                "name": "Rajiv Sundaram",
+                "phone": "+91 94443 77889",
+                "email": "rajiv.sundaram@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "3 nights",
+                "guests": "6 adults",
+                "room_type": "Multiple cottages"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Good afternoon",
+                "tone": "organized",
+                "pace": "normal",
+                "verbosity": "practical"
+            },
+            "additional_instructions": "Mention it's a group of 6 friends traveling together. When told you'll need multiple cottages, ask 'Can we get adjacent cottages so we're close together?' Accept the recommendation for multiple accommodations.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "three_adults_coorg",
+            "name": "Three Adults - Suite Cottage Recommendation",
+            "description": "Three adults traveling together - should get Suite Cottage",
+            "timeout": 600,
+            "customer": {
+                "name": "Geeta Raghavan",
+                "phone": "+91 98112 44556",
+                "email": "geeta.r@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "this Saturday",
+                "duration": "2 nights",
+                "guests": "3 adults",
+                "room_type": "Suite Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hello",
+                "tone": "friendly",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Mention you're traveling with your mother and husband - 3 adults total. When offered accommodation options, prefer staying together in one cottage if possible.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "four_adults_eden_lotus",
+            "name": "Four Adults - Eden Lotus Cottage",
+            "description": "Four adults needing larger accommodation",
+            "timeout": 600,
+            "customer": {
+                "name": "Mohan Das",
+                "phone": "+91 99887 55443",
+                "email": "mohan.das@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "February 15th",
+                "duration": "3 nights",
+                "guests": "4 adults",
+                "room_type": "Eden Lotus Cottage"
+            },
+            "conversation_style": {
+                "opening": "direct_request",
+                "greeting": "Good morning",
+                "tone": "practical",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Two couples traveling together - 4 adults. Prefer all staying in one accommodation if possible. Ask about options that accommodate 4 people together.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "kodai_child_under_7_free",
+            "name": "Kodai Child Under 7 - Complimentary",
+            "description": "Family with child under 7 at Kodai - child should be free",
+            "timeout": 600,
+            "customer": {
+                "name": "Padma Krishnan",
+                "phone": "+91 98234 11223",
+                "email": "padma.k@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "next Saturday",
+                "duration": "2 nights",
+                "guests": "2 adults and 1 child (5 years old)",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hi",
+                "tone": "warm",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Mention you have a 5-year-old daughter. Ask if there are any charges for children. Be pleased when told children under 7 stay free.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "kodai_child_exactly_7_chargeable",
+            "name": "Kodai Child Exactly 7 - Chargeable",
+            "description": "Family with child exactly 7 at Kodai - edge case for charges",
+            "timeout": 600,
+            "customer": {
+                "name": "Vijay Narayanan",
+                "phone": "+91 99001 66778",
+                "email": "vijay.n@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "January 30th",
+                "duration": "3 nights",
+                "guests": "2 adults and 1 child (7 years old)",
+                "room_type": "Heritage Suite"
+            },
+            "conversation_style": {
+                "opening": "direct_request",
+                "greeting": "Hello",
+                "tone": "pleasant",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Mention your son just turned 7 last week. Ask about child rates. Accept whatever pricing is quoted.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "experience_restful_spa",
+            "name": "Restful Experience - Spa Focus",
+            "description": "Guest seeking restful, spa-focused experience",
+            "timeout": 600,
+            "customer": {
+                "name": "Swati Bhatt",
+                "phone": "+91 98765 33221",
+                "email": "swati.bhatt@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Thursday",
+                "duration": "3 nights",
+                "guests": "1 adult",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "calm_request",
+                "greeting": "Hello",
+                "opening_line": "I need a complete break from work stress",
+                "tone": "tired",
+                "pace": "slow",
+                "verbosity": "thoughtful"
+            },
+            "additional_instructions": "When asked about type of getaway, say 'Something very restful. I'm exhausted and need to recharge.' Show interest in spa and wellness. Ask about yoga or meditation options.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "experience_nature_experiential",
+            "name": "Nature and Experiential Focus",
+            "description": "Guest seeking nature walks and activities",
+            "timeout": 600,
+            "customer": {
+                "name": "Ashwin Nambiar",
+                "phone": "+91 94443 22110",
+                "email": "ashwin.n@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "this weekend",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "enthusiastic_intro",
+                "greeting": "Hi!",
+                "opening_line": "We love being outdoors and want to explore nature",
+                "tone": "enthusiastic",
+                "pace": "quick",
+                "verbosity": "expressive"
+            },
+            "additional_instructions": "When asked about type of getaway, say 'Definitely experiential! We want to explore, do nature walks, see the coffee plantations.' Show excitement about outdoor activities and guided experiences.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "rushed_customer_skip_extras",
+            "name": "Rushed Customer - Skip Experience Shaping",
+            "description": "Customer in a hurry - agent should skip optional steps",
+            "timeout": 600,
+            "customer": {
+                "name": "Vivek Malhotra",
+                "phone": "+91 98112 99887",
+                "email": "vivek.m@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "December 30th",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "direct_efficient",
+                "greeting": "Hi",
+                "opening_line": "I need to make a quick booking - I'm between meetings",
+                "tone": "rushed",
+                "pace": "very_fast",
+                "verbosity": "minimal"
+            },
+            "additional_instructions": "Sound rushed throughout. Give very short responses. If agent asks about experience type, say 'Whatever's standard, I don't have time to discuss details.' If asked about special occasions, say 'No, nothing special, let's just book.' Move the conversation along quickly.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "request_formal_address",
+            "name": "Customer Prefers Formal Address",
+            "description": "Customer who prefers to be addressed formally",
+            "timeout": 600,
+            "customer": {
+                "name": "Dr. Ramakrishnan Iyer",
+                "phone": "+91 98765 11100",
+                "email": "dr.iyer@hospital.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "February 10th",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Superior Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "professional_inquiry",
+                "greeting": "Good morning",
+                "opening_line": "This is Dr. Ramakrishnan Iyer calling",
+                "tone": "formal",
+                "pace": "measured",
+                "verbosity": "precise"
+            },
+            "additional_instructions": "Introduce yourself as 'Dr. Ramakrishnan Iyer'. If addressed casually, politely say 'I prefer Dr. Iyer, if you don't mind.' Maintain formal tone throughout. Expect professional service.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "only_checkout_date_given",
+            "name": "Customer Gives Only Checkout Date",
+            "description": "Customer mentions checkout instead of check-in date",
+            "timeout": 600,
+            "customer": {
+                "name": "Leela Gopalan",
+                "phone": "+91 99887 00112",
+                "email": "leela.g@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "January 18th",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hello",
+                "tone": "pleasant",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "When asked about travel dates, say 'I need to check out by January 21st.' If asked for check-in or how many nights, say 'I want to arrive on January 18th and leave on the 21st - so 3 nights.'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "vague_date_next_week",
+            "name": "Vague Date - Next Week",
+            "description": "Customer says 'next week' without specific date",
+            "timeout": 600,
+            "customer": {
+                "name": "Ananya Roy",
+                "phone": "+91 98234 55443",
+                "email": "ananya.roy@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next week",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hi",
+                "tone": "casual",
+                "pace": "relaxed",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "When asked about travel dates, say 'Sometime next week, maybe Thursday or Friday?' Let agent help narrow down. When given options or asked to confirm specific date, pick Thursday.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "ask_about_promotional_offers",
+            "name": "Customer Asks About Promotions",
+            "description": "Customer specifically asks about any ongoing offers",
+            "timeout": 600,
+            "customer": {
+                "name": "Sneha Jain",
+                "phone": "+91 99001 88776",
+                "email": "sneha.jain@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "budget_inquiry",
+                "greeting": "Hi",
+                "opening_line": "I wanted to check if you have any special offers running right now?",
+                "tone": "hopeful",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Start by asking about promotions or special offers. Ask 'Do you have any packages or discounts for longer stays?' Accept whatever is offered or proceed with regular booking if no offers.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "change_room_type_mid_booking",
+            "name": "Customer Changes Room Preference",
+            "description": "Customer changes mind about room type during booking",
+            "timeout": 600,
+            "customer": {
+                "name": "Harish Venkatesh",
+                "phone": "+91 98765 44332",
+                "email": "harish.v@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next Saturday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Superior Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Good afternoon",
+                "tone": "pleasant",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Initially agree to Luxury Cottage. When price is quoted, say 'Actually, what's your next level up? I want something a bit more special.' Ask about Superior Luxury Cottage or Suite. Accept the upgraded option.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "ask_for_all_room_options",
+            "name": "Customer Wants All Room Options",
+            "description": "Customer insists on hearing all room types",
+            "timeout": 600,
+            "customer": {
+                "name": "Manoj Tiwari",
+                "phone": "+91 94443 99887",
+                "email": "manoj.t@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "February 5th",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "direct_request",
+                "greeting": "Hello",
+                "tone": "analytical",
+                "pace": "normal",
+                "verbosity": "detailed"
+            },
+            "additional_instructions": "When agent recommends a room, say 'Can you tell me about ALL your room options? I'd like to compare before deciding.' Listen to options then choose Luxury Cottage as the best value.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "interrupted_customer",
+            "name": "Customer Gets Interrupted",
+            "description": "Customer gets distracted mid-call",
+            "timeout": 600,
+            "customer": {
+                "name": "Rekha Sharma",
+                "phone": "+91 98112 66554",
+                "email": "rekha.sharma@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "January 25th",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hi",
+                "tone": "distracted",
+                "pace": "variable",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Mid-booking (after giving phone number), say 'Sorry, one second...' then pause for a moment. Then say 'Sorry about that, where were we?' Continue with booking. Let agent recap if they do.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "both_resorts_comparison",
+            "name": "Customer Asks Detailed Comparison",
+            "description": "Customer wants detailed comparison of both properties",
+            "timeout": 600,
+            "customer": {
+                "name": "Kritika Sharma",
+                "phone": "+91 99001 22334",
+                "email": "kritika.s@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "question_first",
+                "greeting": "Hello",
+                "first_question": "Can you help me understand the difference between your two resorts?",
+                "tone": "curious",
+                "pace": "normal",
+                "verbosity": "questioning"
+            },
+            "additional_instructions": "Ask specific comparison questions: 'What's the main difference in experience?', 'Which has better views?', 'Which is more romantic for couples?' After detailed discussion, choose Coorg because 'The coffee plantation sounds magical.'",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "email_spelling_challenge",
+            "name": "Complex Email Address",
+            "description": "Customer with unusual email that needs spelling",
+            "timeout": 600,
+            "customer": {
+                "name": "Vaishnavi Subramanian",
+                "phone": "+91 98765 00998",
+                "email": "v.subramanian_2024@outlook.co.in"
+            },
+            "preferences": {
+                "hotel": "Tamara Kodai",
+                "checkin": "next Friday",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Heritage Room"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Good morning",
+                "tone": "patient",
+                "pace": "slow",
+                "verbosity": "detailed"
+            },
+            "additional_instructions": "When asked for email, say 'v dot subramanian underscore 2024 at outlook dot co dot in'. Spell it out if needed: V period S-U-B-R-A-M-A-N-I-A-N underscore two zero two four. Confirm when agent reads it back.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Kodai",
+                "provided_info": [
+                    "name",
+                    "phone",
+                    "email"
+                ]
+            }
+        },
+        {
+            "id": "disconnect_and_callback",
+            "name": "Simulated Disconnect Scenario",
+            "description": "Customer mentions call quality issues",
+            "timeout": 600,
+            "customer": {
+                "name": "Ajay Kulkarni",
+                "phone": "+91 94443 55667",
+                "email": "ajay.k@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "this weekend",
+                "duration": "2 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "wait_for_agent",
+                "greeting": "Hello? Can you hear me?",
+                "tone": "concerned",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Start by checking if they can hear you. Early in the call, say 'Sorry, you're breaking up a bit - can you repeat that?' After phone number is given, say 'The connection seems better now.' Complete the booking normally.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        },
+        {
+            "id": "wants_specific_cottage_number",
+            "name": "Customer Requests Specific Cottage",
+            "description": "Customer wants a specific cottage number from previous stay",
+            "timeout": 600,
+            "customer": {
+                "name": "Sudha Raghunathan",
+                "phone": "+91 98112 33445",
+                "email": "sudha.r@example.com"
+            },
+            "preferences": {
+                "hotel": "Tamara Coorg",
+                "checkin": "next month",
+                "duration": "3 nights",
+                "guests": "2 adults",
+                "room_type": "Luxury Cottage"
+            },
+            "conversation_style": {
+                "opening": "returning_guest",
+                "greeting": "Hello",
+                "opening_line": "I stayed at Tamara Coorg before and loved cottage 14",
+                "tone": "hopeful",
+                "pace": "normal",
+                "verbosity": "medium"
+            },
+            "additional_instructions": "Specifically request 'cottage 14 or 15 - they had the best views.' Understand if specific cottage can't be guaranteed. Accept agent's assurance that they'll note the preference.",
+            "success_criteria": {
+                "booking_confirmed": true,
+                "correct_hotel": "Tamara Coorg",
+                "provided_info": [
+                    "name",
+                    "phone"
+                ]
+            }
+        }
+    ]
+}

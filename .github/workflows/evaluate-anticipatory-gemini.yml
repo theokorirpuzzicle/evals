@@ -1,0 +1,106 @@
+name: Hotel Booking Evaluation
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenario_count:
+        description: 'Number of random scenarios to run (0 = all scenarios)'
+        required: false
+        default: '5'
+      text_mode:
+        description: 'Run in text-only mode (no audio)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r anticipatory/requirements.txt
+
+      - name: Run evaluation
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        working-directory: anticipatory
+        run: |
+          ARGS=""
+
+          # Use scenario count for random selection if specified and not 0
+          if [ "${{ inputs.scenario_count }}" != "0" ] && [ -n "${{ inputs.scenario_count }}" ]; then
+            ARGS="$ARGS -n ${{ inputs.scenario_count }}"
+          fi
+
+          # Add text mode flag if enabled
+          if [ "${{ inputs.text_mode }}" == "true" ]; then
+            ARGS="$ARGS --text-mode"
+          fi
+
+          echo "Running: python run_eval.py $ARGS"
+          python run_eval.py $ARGS
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evaluation-results-${{ github.run_number }}
+          path: anticipatory/results/evaluation_results.xlsx
+          retention-days: 30
+
+      - name: Convert WAV to MP3
+        if: always() && inputs.text_mode != 'true'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          mkdir -p anticipatory/results/audio_mp3
+          count=0
+          for f in anticipatory/results/audio/*.wav; do
+            if [ -f "$f" ]; then
+              filename=$(basename "$f" .wav)
+              ffmpeg -i "$f" -codec:a libmp3lame -b:a 128k "anticipatory/results/audio_mp3/${filename}.mp3" -y -loglevel quiet
+              count=$((count + 1))
+            fi
+          done
+          echo "Converted $count audio files to MP3"
+
+      - name: Upload audio files
+        uses: actions/upload-artifact@v4
+        if: always() && inputs.text_mode != 'true'
+        with:
+          name: audio-recordings-${{ github.run_number }}
+          path: anticipatory/results/audio_mp3/*.mp3
+          retention-days: 7
+
+      - name: Upload transcripts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: transcripts-${{ github.run_number }}
+          path: anticipatory/results/transcripts/*.txt
+          retention-days: 30
+
+      - name: Commit results to repo
+        if: always()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add anticipatory/results/evaluation_results.xlsx || true
+          git add anticipatory/results/transcripts/*.txt || true
+          git add anticipatory/results/audio_mp3/*.mp3 || true
+          git diff --staged --quiet || git commit -m "Update evaluation results [skip ci]"
+          git pull --rebase origin main
+          git push || echo "Nothing to push or push failed"

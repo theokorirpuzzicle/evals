@@ -1,0 +1,9 @@
+Scenario: Pricing Accuracy & Consistency Test
+Customer: Rajesh Kumar
+Timestamp: 2026-01-02 12:41:15
+Duration: 18s
+Booking Confirmed: False
+Booking Number: None
+============================================================
+
+[1] AGENT: Hello welcome to the tamara resorts how

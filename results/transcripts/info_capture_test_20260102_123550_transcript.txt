@@ -1,0 +1,26 @@
+Scenario: Basic Information Capture Test
+Customer: Manmita Chatterjee
+Timestamp: 2026-01-02 12:35:50
+Duration: 302s
+Booking Confirmed: False
+Booking Number: None
+============================================================
+
+[1] AGENT: He love welcome to the tamer resorts
+[2] CUSTOMER: Hello, i'd like to book a room please.
+[3] AGENT: How may i assist you to me are you looking to make a new booking or do you have a question about
+[4] CUSTOMER: I want to make a new booking.
+[5] AGENT: An existing reservation certainly
+[6] CUSTOMER: Manmita chatterjee.
+[7] AGENT: , may i have your name? thank you, man
+[8] CUSTOMER: Yes, that's correct.
+[9] AGENT: Meta. Did i come right? and
+[10] CUSTOMER: It is +91-98765-43210. 43210.
+[11] AGENT: A phone number where we were too and is this an indian mobile number with
+[12] CUSTOMER: Yes, that's correct.
+[13] AGENT: Country code plus n1 perfect. We have two beautiful retreats. The tomara corg said in a coffee plantation and the tamarakodi, a heritage hill resort, which sounds
+[14] CUSTOMER: The tamara coorg, please.
+[15] AGENT: More appealing to you. Great. Let me help you with your booking.
+[16] CUSTOMER: March 15th for 3 nights.
+[17] AGENT: When would you like to try? and
+[18] CUSTOMER: 3 adults.

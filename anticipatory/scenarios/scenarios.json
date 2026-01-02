@@ -1,0 +1,192 @@
+{
+  "scenarios": [
+    {
+      "id": "info_capture_test",
+      "name": "Basic Information Capture Test",
+      "description": "Tests agent's ability to correctly capture customer name, phone, and email address",
+      "customer": {
+        "name": "Manmita Chatterjee",
+        "phone": "+91-98765-43210",
+        "email": "manmita.chatterjee@example.com"
+      },
+      "preferences": {
+        "hotel": "The Tamara Coorg",
+        "checkin": "March 15th",
+        "duration": "3 nights",
+        "guests": "3 adults",
+        "room_type": "Luxury Cottage"
+      },
+      "conversation_style": {
+        "opening": "wait_for_agent",
+        "greeting": "Hello",
+        "tone": "slow and deliberate",
+        "pace": "slow",
+        "verbosity": "medium"
+      },
+      "additional_instructions": "Speak slowly and deliberately as an elderly customer. Be prepared to repeat your email address if needed. You are traveling with your elderly parents for a relaxing vacation.",
+      "evaluation_criteria": {
+        "customer_name_captured_correctly": {
+          "description": "Full name 'Manmita Chatterjee' captured without errors",
+          "critical": true
+        },
+        "phone_number_captured_correctly": {
+          "description": "Phone number '+91-98765-43210' captured accurately",
+          "critical": true
+        },
+        "email_captured_correctly": {
+          "description": "Email 'manmita.chatterjee@example.com' captured within 3 attempts",
+          "critical": true
+        },
+        "agent_shows_patience": {
+          "description": "Agent demonstrates patience with elderly customer, offers to repeat information",
+          "critical": false
+        },
+        "booking_confirmation_sent": {
+          "description": "Booking confirmation mentioned/sent to correct email address",
+          "critical": true
+        }
+      }
+    },
+    {
+      "id": "pricing_accuracy_test",
+      "name": "Pricing Accuracy & Consistency Test",
+      "description": "Tests agent's pricing accuracy, plan comparison, and consistency with website rates",
+      "customer": {
+        "name": "Rajesh Kumar",
+        "phone": "+91-99887-76655",
+        "email": "rajesh.k@example.com"
+      },
+      "preferences": {
+        "hotel": "The Tamara Coorg",
+        "checkin": "February 14th",
+        "duration": "2 nights",
+        "guests": "2 adults",
+        "room_type": "Luxury Cottage"
+      },
+      "conversation_style": {
+        "opening": "wait_for_agent",
+        "greeting": "Hello",
+        "tone": "analytical",
+        "pace": "normal",
+        "verbosity": "medium"
+      },
+      "additional_instructions": "Be analytical and price-conscious. When quoted a price, ask about different meal plans (AP vs CP). Express that your maximum budget is around 31,000 rupees for the stay. See if agent respects your budget constraints.",
+      "evaluation_criteria": {
+        "pricing_per_night_vs_total_clear": {
+          "description": "Agent clearly states whether price is per night or total stay",
+          "critical": true
+        },
+        "meal_plan_differences_explained": {
+          "description": "Agent explains what's included in different meal plans",
+          "critical": true
+        },
+        "budget_sensitivity_shown": {
+          "description": "Agent respects stated budget and doesn't suggest rooms significantly over budget",
+          "critical": true
+        },
+        "no_unrealistic_pricing": {
+          "description": "No rates quoted that are unrealistically low (e.g., 9000 for 2 nights)",
+          "critical": true
+        },
+        "rate_negotiation_handled_well": {
+          "description": "Agent handles price questions with value explanation, not just repetition",
+          "critical": false
+        }
+      }
+    },
+    {
+      "id": "child_policy_empathy_test",
+      "name": "Child Policy Handling & Empathy Test",
+      "description": "Tests agent's handling of policy restrictions with empathy and retention efforts",
+      "customer": {
+        "name": "Priya Sharma",
+        "phone": "+91-98111-22334",
+        "email": "priya.sharma@example.com"
+      },
+      "preferences": {
+        "hotel": "The Tamara Coorg",
+        "checkin": "April 10th",
+        "duration": "3 nights",
+        "guests": "2 adults and 1 child aged 8",
+        "room_type": "any available"
+      },
+      "conversation_style": {
+        "opening": "wait_for_agent",
+        "greeting": "Good morning",
+        "tone": "friendly",
+        "pace": "normal",
+        "verbosity": "medium"
+      },
+      "additional_instructions": "You're planning a family vacation with your 8-year-old child. When told about the child policy, express mild surprise but remain polite.",
+      "evaluation_criteria": {
+        "child_policy_communicated": {
+          "description": "Agent clearly explains that children are not permitted at The Tamara Coorg",
+          "critical": true
+        },
+        "empathy_expressed": {
+          "description": "Agent expresses understanding/empathy (e.g., 'I understand this may be disappointing')",
+          "critical": true
+        },
+        "alternative_offered": {
+          "description": "Agent proactively offers alternative property (Kodaikanal) that accepts children",
+          "critical": true
+        },
+        "courteous_closing": {
+          "description": "Call ends with thank you and offer of future assistance (not abrupt)",
+          "critical": true
+        },
+        "retention_attempt_made": {
+          "description": "Agent suggests future possibilities or alternate dates",
+          "critical": false
+        }
+      }
+    },
+    {
+      "id": "room_capacity_policy_test",
+      "name": "Room Capacity & Policy Adherence Test",
+      "description": "Tests agent's knowledge of room occupancy limits and extra bed policies",
+      "customer": {
+        "name": "Anand Reddy",
+        "phone": "+91-97654-32109",
+        "email": "anand.reddy@example.com"
+      },
+      "preferences": {
+        "hotel": "The Tamara Coorg",
+        "checkin": "December 23rd",
+        "duration": "3 nights",
+        "guests": "3 adults",
+        "room_type": "Superior Cottage"
+      },
+      "conversation_style": {
+        "opening": "wait_for_agent",
+        "greeting": "Hello",
+        "tone": "direct",
+        "pace": "normal",
+        "verbosity": "medium"
+      },
+      "additional_instructions": "Initially ask about Superior Cottage. When discussing room options, ask if an extra bed can be provided in Superior Cottage if needed. Also ask about complimentary activities like bird watching.",
+      "evaluation_criteria": {
+        "superior_cottage_capacity_correct": {
+          "description": "Agent correctly states Superior Cottage cannot accommodate 3 adults",
+          "critical": true
+        },
+        "suite_cottage_suggested": {
+          "description": "Agent suggests Suite Cottage as appropriate for 3 adults",
+          "critical": true
+        },
+        "extra_bed_policy_correct": {
+          "description": "Agent correctly states no extra beds available in Superior/Luxury Cottages",
+          "critical": true
+        },
+        "activity_pricing_accurate": {
+          "description": "Agent correctly identifies chargeable activities (bird watching is chargeable, not complimentary)",
+          "critical": true
+        },
+        "room_categories_match_website": {
+          "description": "Room categories offered match official website categories",
+          "critical": false
+        }
+      }
+    }
+  ]
+}
